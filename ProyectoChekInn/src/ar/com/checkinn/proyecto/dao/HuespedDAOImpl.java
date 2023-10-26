@@ -20,7 +20,7 @@ public class HuespedDAOImpl {
         try {
             unaConexion = Conexion.obtenerConexion();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         String unaConsulta = "select * from huespedes";
@@ -29,14 +29,14 @@ public class HuespedDAOImpl {
         try {
             unaSentencia = unaConexion.createStatement();
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         ResultSet unResultado = null;
         try {
             unResultado = unaSentencia.executeQuery(unaConsulta);
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         try {
@@ -51,13 +51,13 @@ public class HuespedDAOImpl {
                 System.out.println("--------------------------------");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         try {
             unaConexion.close();
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lista;
 
@@ -68,7 +68,7 @@ public class HuespedDAOImpl {
         try {
             unaConexion = Conexion.obtenerConexion();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         String unaConsulta = "select * from huespedes where numDocumento = '"  + numDocumento + "'";
@@ -77,14 +77,14 @@ public class HuespedDAOImpl {
         try {
             unaSentencia = unaConexion.createStatement();
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         ResultSet unResultado = null;
         try {
             unResultado = unaSentencia.executeQuery(unaConsulta);
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         try {
@@ -100,13 +100,13 @@ public class HuespedDAOImpl {
                 System.out.println("--------------------------------");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         try {
             unaConexion.close();
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -116,7 +116,7 @@ public class HuespedDAOImpl {
         try {
             unaConexion = Conexion.obtenerConexion();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         String unaInsercion = "insert into huespedes(nombre, apellido, tipoDocumento, numDocumento, direccion, telefono, email) values(?, ?, ?, ?, ?, ?, ?)";
@@ -125,49 +125,49 @@ public class HuespedDAOImpl {
         try {
             unaSentencia = unaConexion.prepareStatement(unaInsercion);
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         try {
             unaSentencia.setString(1, a.getNombre());
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             unaSentencia.setString(2, a.getApellido());
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             unaSentencia.setString(3, a.getTipoDocumento());
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             unaSentencia.setString(3, a.getNumDocumento());
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             unaSentencia.setString(3, a.getDireccion());
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             unaSentencia.setString(3, a.getTelefono());
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             unaSentencia.setString(3, a.getEmail());
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         try {
             unaSentencia.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         System.out.println("Insercion correcta");
@@ -175,7 +175,7 @@ public class HuespedDAOImpl {
         try {
             unaConexion.close();
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -185,7 +185,7 @@ public class HuespedDAOImpl {
         try {
             unaConexion = Conexion.obtenerConexion();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         String unaEliminacion = "delete from huespedes where numDocumento = ?";
@@ -194,19 +194,19 @@ public class HuespedDAOImpl {
         try {
             unaSentencia = unaConexion.prepareStatement(unaEliminacion);
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         try {
             unaSentencia.setString(1, numDocumento);
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         try {
             unaSentencia.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         System.out.println("Eliminacion correcta");
@@ -214,7 +214,7 @@ public class HuespedDAOImpl {
         try {
             unaConexion.close();
         } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
