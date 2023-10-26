@@ -33,19 +33,31 @@ public class Empleado {
         return clave;
     }
     public final void setClave(String clave) {
-        this.clave = clave;
+        if (clave.length()<20) {
+            this.clave = clave;            
+        } else {
+            System.out.println("Ingrese una clave mas corta");
+        }
     }
     public String getAlias() {
         return alias;
     }
     public final void setAlias(String alias) {
-        this.alias = alias;
+        if (alias.length()<20) {
+         this.alias = alias;
+        } else {
+            System.out.println("ingrese un alias mas corto");
+        }
     }
     public String getUsuario() {
         return usuario;
     }
     public final void setUsuario(String usuario) {
-        this.usuario = usuario;
+        if (usuario.length()<15) {
+            this.usuario = usuario;   
+        }else {
+            System.out.println("Ingrese un usuario mas corto");
+        }
     }
     public int getIdEmpleado() {
         return idEmpleado;
