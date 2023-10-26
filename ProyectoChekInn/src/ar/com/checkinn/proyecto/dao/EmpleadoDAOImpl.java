@@ -302,37 +302,4 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
     }
 
     
-    
-    
-    /*    
-Logger.getLogger(AlumnoDAOImpl.class.getName()).log(Level.SEVERE, null, ex); es 
-una instrucción típica en Java utilizada para registrar un mensaje de error en un 
-archivo de registro o en la consola utilizando el sistema de registro incorporado 
-de Java, conocido como el framework de registro Java Logging API (también conocido 
-como java.util.logging).
-
-
-Logger.getLogger(AlumnoDAOImpl.class.getName()): Esta parte obtiene una instancia 
-del objeto Logger asociado a la clase AlumnoDAOImpl. El Logger es responsable de 
-gestionar y registrar mensajes de registro.
-
-.log(Level.SEVERE, null, ex): Aquí se llama al método log del objeto Logger para 
-registrar un mensaje. Level.SEVERE indica que se está registrando un mensaje de 
-nivel "severo" o de error. Este nivel se utiliza para mensajes de error críticos.
-
-null: El segundo argumento es el identificador del recurso asociado con el mensaje 
-de registro. En este caso, se pasa null para indicar que no hay recurso específico 
-relacionado con el mensaje.
-
-ex: El tercer argumento es el objeto Throwable (por lo general, una excepción) que 
-se registra junto con el mensaje. Esto permite registrar información detallada sobre 
-una excepción que ocurrió.
-
-En resumen, esta línea de código se utiliza para registrar un mensaje de error 
-(nivel "SEVERE") junto con detalles de una excepción (ex) en el registro de la 
-aplicación, que puede ser útil para el diagnóstico y la depuración de problemas. 
-El registro es una práctica común en el desarrollo de aplicaciones para ayudar a 
-los desarrolladores a rastrear y solucionar problemas.
-
-     */
 }
