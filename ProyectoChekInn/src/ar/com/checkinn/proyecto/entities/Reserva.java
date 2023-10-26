@@ -1,6 +1,5 @@
 package ar.com.checkinn.proyecto.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Reserva {
@@ -19,16 +18,16 @@ public class Reserva {
     public Reserva() {    
     }
 
-    public Reserva(int idreserva, Habitacion idHabitacion, Huesped idHuesped, List<Empleado> empleado, String tipoReserva, String fechaIngreso, String fechaSalida, double costoAlojamiento, boolean estado) {
-        this.setIdReserva(idReserva);
-        this.setIdHabitacion(idHabitacion);
-        this.setInCliente(idHuesped);
-        this.empleado = new ArrayList<>();
-        this.setTipoReserva(tipoReserva);
-        this.setFechaIngreso(fechaIngreso);
-        this.setFechaSalida(fechaSalida);
-        this.setCostoAlojamiento(costoAlojamiento);
-        this.setEstado(estado);
+    public Reserva(int idReserva, Habitacion idHabitacion, Huesped idHuesped, List<Empleado> empleado, String tipoReserva, String fechaIngreso, String fechaSalida, double costoAlojamiento, boolean estado) {
+        this.idReserva = idReserva;
+        this.idHabitacion = idHabitacion;
+        this.idHuesped = idHuesped;
+        this.empleado = empleado;
+        this.tipoReserva = tipoReserva;
+        this.fechaIngreso = fechaIngreso;
+        this.fechaSalida = fechaSalida;
+        this.costoAlojamiento = costoAlojamiento;
+        this.estado = estado;
     }
     
     //Getters and Setters
@@ -42,12 +41,22 @@ public class Reserva {
         return costoAlojamiento;
     }
     public final void setCostoAlojamiento(double costoAlojamiento) {
-        this.costoAlojamiento = costoAlojamiento;
+        
+        if (costoAlojamiento >= 0 && costoAlojamiento <= 9999999.99)
+        {
+           this.costoAlojamiento = costoAlojamiento; 
+        } else
+        {
+            System.out.println("Cantidad de digitos no permitida");
+        }
+        
     }
     public String getFechaSalida() {
         return fechaSalida;
     }
     public final void setFechaSalida(String fechaSalida) {
+        
+        
         this.fechaSalida = fechaSalida;
     }
     public String getFechaIngreso() {
@@ -60,13 +69,21 @@ public class Reserva {
         return tipoReserva;
     }
     public final void setTipoReserva(String tipoReserva) {
-        this.tipoReserva = tipoReserva;
+        if (tipoReserva.length() >= 0 && tipoReserva.length() <= 20)
+        {
+            this.tipoReserva = tipoReserva;
+        } else
+        {
+            System.out.println("cantidad de caracteres excede el maximo permitido");
+        }
+        
     }
-    public Huesped getInCliente() {
+     public Huesped getIdHuesped() {
         return idHuesped;
     }
-    public final void setInCliente(Huesped inCliente) {
-        this.idHuesped= inCliente;
+
+    public void setIdHuesped(Huesped idHuesped) {
+        this.idHuesped = idHuesped;
     }
     public Habitacion getIdHabitacion() {
         return idHabitacion;
