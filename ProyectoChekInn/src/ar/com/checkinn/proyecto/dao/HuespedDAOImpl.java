@@ -2,6 +2,7 @@ package ar.com.checkinn.proyecto.dao;
 
 import ar.com.checkinn.proyecto.connectors.Conexion;
 import ar.com.checkinn.proyecto.entities.Huesped;
+import ar.com.checkinn.proyecto.interfaces.HuespedDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,8 +13,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class HuespedDAOImpl {
+public class HuespedDAOImpl implements HuespedDAO{
     
+    @Override
     public List<Huesped> consultarTodos() {
         Connection unaConexion = null;
         List<Huesped> lista = new ArrayList<>();
@@ -63,6 +65,7 @@ public class HuespedDAOImpl {
 
     }
     
+    @Override
      public void consultarUno(String numDocumento) {
         Connection unaConexion = null;
         try {
@@ -111,6 +114,7 @@ public class HuespedDAOImpl {
 
     }
      
+    @Override
      public void insertar(Huesped a) {
         Connection unaConexion = null;
         try {
@@ -144,22 +148,22 @@ public class HuespedDAOImpl {
             Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            unaSentencia.setString(3, a.getNumDocumento());
+            unaSentencia.setString(4, a.getNumDocumento());
         } catch (SQLException ex) {
             Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            unaSentencia.setString(3, a.getDireccion());
+            unaSentencia.setString(5, a.getDireccion());
         } catch (SQLException ex) {
             Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            unaSentencia.setString(3, a.getTelefono());
+            unaSentencia.setString(6, a.getTelefono());
         } catch (SQLException ex) {
             Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            unaSentencia.setString(3, a.getEmail());
+            unaSentencia.setString(7, a.getEmail());
         } catch (SQLException ex) {
             Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -180,6 +184,7 @@ public class HuespedDAOImpl {
 
     }
      
+    @Override
      public void eliminar(String numDocumento) {
         Connection unaConexion = null;
         try {
