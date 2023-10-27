@@ -56,7 +56,7 @@ public class Habitacion {
         return precioDiario;
     }
     public final void setPrecio_diario(double precioDiario) {
-        if (precioDiario >= 0 && precioDiario <= 9)
+        if (precioDiario >= 0 && precioDiario <= 9999999.99)
         {
             this.precioDiario = precioDiario;
 
