@@ -225,7 +225,7 @@ public class HabitacionDAOImpl implements HabitacionDAO{
      
      @Override
     public ArrayList<Habitacion> cargarListaDisponibles() {
-        ArrayList<Habitacion> lista = new ArrayList<Habitacion>();
+        ArrayList<Habitacion> lista = new ArrayList<>();
 
         Connection unaConexion = null;
         try {
