@@ -1,6 +1,6 @@
 package ar.com.checkinn.proyecto.dao;
 
-import ar.com.checkinn.proyecto.Conexion;
+import ar.com.checkinn.proyecto.connectors.Conexion;
 import ar.com.checkinn.proyecto.entities.Empleado;
 import ar.com.checkinn.proyecto.interfaces.EmpleadoDAO;
 import java.sql.Connection;
