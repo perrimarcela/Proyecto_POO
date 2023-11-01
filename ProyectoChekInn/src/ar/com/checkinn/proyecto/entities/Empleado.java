@@ -1,6 +1,8 @@
 package ar.com.checkinn.proyecto.entities;
 
-public class Empleado {
+import ar.com.checkinn.proyecto.dao.EmpleadoDAOImpl;
+
+public class Empleado extends EmpleadoDAOImpl{
     //atributos
     private int idEmpleado;
     private String usuario;
