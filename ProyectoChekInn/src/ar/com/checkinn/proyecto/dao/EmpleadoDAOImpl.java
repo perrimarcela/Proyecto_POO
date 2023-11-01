@@ -88,8 +88,8 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
 
         try {
             if (unResultado.next()) {
-                System.out.println("IdEmpleado: " + unResultado.getInt(" idEmpleado"));
-                System.out.println("Usuario: " + unResultado.getString(" usuario"));
+                System.out.println("IdEmpleado: " + unResultado.getInt("idEmpleado"));
+                System.out.println("Usuario: " + unResultado.getString("usuario"));
                 System.out.println("Clave: " + unResultado.getString("clave"));
                 System.out.println("Alias: " + unResultado.getString("alias"));
                 System.out.println("Estado: " + unResultado.getBoolean("estado"));
@@ -116,7 +116,7 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
             Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        String unaInsercion = "insert into empleados(usuario, clave, alias, estado) values(?, ?, ?, ?)";
+        String unaInsercion = "insert into empleados(idEmpleado, usuario, clave, alias, estado) values(?, ?, ?, ?, ?)";
 
         PreparedStatement unaSentencia = null;
         try {
@@ -126,23 +126,28 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
         }
 
         try {
-            unaSentencia.setString(1, a.getUsuario());
+            unaSentencia.setInt(1, a.getIdEmpleado());
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            unaSentencia.setString(2, a.getClave());
+            unaSentencia.setString(2, a.getUsuario());
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            unaSentencia.setString(3, a.getAlias());
+            unaSentencia.setString(3, a.getClave());
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            unaSentencia.setString(4, a.getAlias());
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             //unaSentencia.setBoolean(4, a.getEstado());
-            unaSentencia.setBoolean(4, false);
+            unaSentencia.setBoolean(5, a.getEstado());
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
