@@ -1,39 +1,41 @@
 package ar.com.checkinn.proyecto.entities;
 
-public class Habitacion {
+import ar.com.checkinn.proyecto.dao.HabitacionDAOImpl;
+
+public class Habitacion extends HabitacionDAOImpl {
     //Atributos
-    private String idHabitacion;
+    private int idHabitacion;
     private String numero;
     private String piso;
     private String descripcion;   
     private String caracteristicas;
-    private double precioDiario;
+    private double precio_diario;
     private boolean estado;
-    private String tipoHabitacion;
+    private String tipo_habitacion;
 
     //constructores
     public Habitacion() {
     }
 
-    public Habitacion(String idHabitacion, String numero, String piso, String descripcion, String caracteristicas, double precioDiario, boolean estado, String tipoHabitacion) {
+    public Habitacion(int idHabitacion, String numero, String piso, String descripcion, String caracteristicas, double precio_diario, boolean estado, String tipo_habitacion) {
         this.setIdHabitacion(idHabitacion);
         this.setNumero(numero);
         this.setPiso(piso);
         this.setDescripcion(descripcion);
         this.setCaracteristicas(caracteristicas);
-        this.setPrecio_diario(precioDiario);
+        this.setPrecio_diario(precio_diario);
         this.setEstado(estado);
-        this.setTipoHabitacion(tipoHabitacion);
+        this.setTipo_Habitacion(tipo_habitacion);
     }
     
     //Getters and Setters
-    public String getTipoHabitacion() {
-        return tipoHabitacion;
+    public String getTipo_Habitacion() {
+        return tipo_habitacion;
     }
-    public final void setTipoHabitacion(String tipoHabitacion) {
-        if (tipoHabitacion.length() <= 20 && tipoHabitacion.length() >= 0)
+    public final void setTipo_Habitacion(String tipo_habitacion) {
+        if (tipo_habitacion.length() <= 20 && tipo_habitacion.length() >= 0)
         {
-            this.tipoHabitacion = tipoHabitacion;
+            this.tipo_habitacion = tipo_habitacion;
         } else
         {
             System.out.println("Superaste la cantidad de caracteres permitidos, el maximo es 20 caracteres");
@@ -43,22 +45,15 @@ public class Habitacion {
         return estado;
     }
     public final void setEstado(boolean estado) {
-        if (estado == true)
-        {
-            this.estado = estado;
-
-        } else  
-        {
-            System.out.println("La habitacion no esta disponible");
-        }
+        
     }
-    public double getPrecioDiario() {
-        return precioDiario;
+    public double getprecio_diario() {
+        return precio_diario;
     }
-    public final void setPrecio_diario(double precioDiario) {
-        if (precioDiario >= 0 && precioDiario <= 9999999.99)
+    public final void setPrecio_diario(double precio_diario) {
+        if (precio_diario >= 0 && precio_diario <= 9999999.99)
         {
-            this.precioDiario = precioDiario;
+            this.precio_diario = precio_diario;
 
         } else
         {
@@ -113,17 +108,17 @@ public class Habitacion {
             System.out.println("Excede el limite de caracteres permitido");
         }
     }
-    public String getIdHabitacion() {
+    public int getIdHabitacion() {
         return idHabitacion;
     }
-    public final void setIdHabitacion(String idHabitacion) {
+    public final void setIdHabitacion(int idHabitacion) {
         this.idHabitacion = idHabitacion;
     }
     
     //ToString
     @Override
     public String toString() {
-        return "Habitacion= " + idHabitacion + "\nNumero=" + numero + "\nPiso= " + piso + "\nDescripcion= " + descripcion + "\nCaracteristicas= " + caracteristicas + "\nPrecio por Dia= " + precioDiario + "\nEstado= " + estado + "\nTipo de Habitacion= " + tipoHabitacion;
+        return "Habitacion= " + idHabitacion + "\nNumero=" + numero + "\nPiso= " + piso + "\nDescripcion= " + descripcion + "\nCaracteristicas= " + caracteristicas + "\nPrecio por Dia= " + precio_diario + "\nEstado= " + estado + "\nTipo de Habitacion= " + tipo_habitacion;
     }
     
 }
