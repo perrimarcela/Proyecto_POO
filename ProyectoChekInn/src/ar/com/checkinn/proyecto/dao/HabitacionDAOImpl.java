@@ -46,7 +46,7 @@ public class HabitacionDAOImpl implements HabitacionDAO{
                 System.out.println("Piso: " + unResultado.getString("piso"));
                 System.out.println("Descripcion: " + unResultado.getString("descripcion"));
                 System.out.println("Caracteristicas: " + unResultado.getString("caracteristicas"));
-                System.out.println("Precio x Día: " + unResultado.getString("precioDiario"));
+                System.out.println("Precio x Día: " + unResultado.getString("precio_diario"));
                 System.out.println("Caracteristicas: " + unResultado.getString("caracteristicas"));
                 System.out.println("Tipo de Habitación: " + unResultado.getString("tipoHabitacion"));
                 System.out.println("--------------------------------");
@@ -91,11 +91,13 @@ public class HabitacionDAOImpl implements HabitacionDAO{
 
         try {
             if (unResultado.next()) {
+                
+                System.out.println("IdHabitacion: " + unResultado.getString("IdHabitacion"));
                 System.out.println("Numero: " + unResultado.getString("numero"));
                 System.out.println("Piso: " + unResultado.getString("piso"));
                 System.out.println("Descripcion: " + unResultado.getString("descripcion"));
                 System.out.println("Caracteristicas: " + unResultado.getString("caracteristicas"));
-                System.out.println("Precio x Día: " + unResultado.getString("precioDiario"));
+                System.out.println("Precio x Día: " + unResultado.getString("precio_diario"));
                 System.out.println("Caracteristicas: " + unResultado.getString("caracteristicas"));
                 System.out.println("Estado: " + unResultado.getString("estado"));
                 System.out.println("Tipo de Habitación: " + unResultado.getString("tipoHabitacion"));
@@ -122,7 +124,7 @@ public class HabitacionDAOImpl implements HabitacionDAO{
             Logger.getLogger(HabitacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        String unaInsercion = "insert into empleados(numero,piso,descripcion,caracteristicas,precioDiario,estado,tipoHabitacion) values(?, ?, ?, ?, ?, ?, ?)";
+        String unaInsercion = "insert into habitaciones(idHabitacion,numero,piso,descripcion,caracteristicas,precio_diario,estado,tipo_habitacion) values(?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement unaSentencia = null;
         try {
@@ -130,40 +132,45 @@ public class HabitacionDAOImpl implements HabitacionDAO{
         } catch (SQLException ex) {
             Logger.getLogger(HabitacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         try {
-            unaSentencia.setString(1, a.getNumero());
+            unaSentencia.setInt(1, a.getIdHabitacion());
         } catch (SQLException ex) {
             Logger.getLogger(HabitacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            unaSentencia.setString(2, a.getPiso());
+            unaSentencia.setString(2, a.getNumero());
         } catch (SQLException ex) {
             Logger.getLogger(HabitacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            unaSentencia.setString(3, a.getDescripcion());
+            unaSentencia.setString(3, a.getPiso());
         } catch (SQLException ex) {
             Logger.getLogger(HabitacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            unaSentencia.setString(4, a.getCaracteristicas());
+            unaSentencia.setString(4, a.getDescripcion());
         } catch (SQLException ex) {
             Logger.getLogger(HabitacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            unaSentencia.setDouble(5, a.getPrecioDiario());
+            unaSentencia.setString(5, a.getCaracteristicas());
+        } catch (SQLException ex) {
+            Logger.getLogger(HabitacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            unaSentencia.setDouble(6, a.getprecio_diario());
         } catch (SQLException ex) {
             Logger.getLogger(HabitacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             //unaSentencia.setBoolean(4, a.getEstado());
-            unaSentencia.setBoolean(6, false);
+            unaSentencia.setBoolean(7, false);
         } catch (SQLException ex) {
             Logger.getLogger(HabitacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            unaSentencia.setString(7, a.getTipoHabitacion());
+            unaSentencia.setString(8, a.getTipo_Habitacion());
         } catch (SQLException ex) {
             Logger.getLogger(HabitacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -252,16 +259,16 @@ public class HabitacionDAOImpl implements HabitacionDAO{
 
         try {
             while (unResultado.next()) {
-                String idHabitacion = unResultado.getString("idHabitacion");
+                int idHabitacion = unResultado.getInt("idHabitacion");
                 String numero = unResultado.getString("numero");
                 String piso = unResultado.getString("piso");
                 String descripcion = unResultado.getString("descripcion");
                 String caracteristicas = unResultado.getString("caracteristicas");
-                int precioDiario = unResultado.getInt("precioDiario");
+                int precio_diario = unResultado.getInt("precio_diario");
                 Boolean estado = false;
                 String tipoHabitacion = unResultado.getString("tipoHabitacion");
                 
-                Habitacion a = new Habitacion(idHabitacion, numero, piso, descripcion, caracteristicas, precioDiario, estado, tipoHabitacion);
+                Habitacion a = new Habitacion(idHabitacion, numero, piso, descripcion, caracteristicas, precio_diario, estado, tipoHabitacion);
                 lista.add(a);
             }
         } catch (SQLException ex) {
