@@ -9,6 +9,7 @@ public interface HabitacionDAO {
     void consultarUna(String numero);
     void insertar(Habitacion a);
     void eliminar(String numero);
+    void modificarEstado(Habitacion a);
     ArrayList<Habitacion> cargarListaDisponibles();
 }
 
