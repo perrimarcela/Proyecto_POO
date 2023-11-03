@@ -24,7 +24,7 @@ public class HabitacionDAOImpl implements HabitacionDAO{
             Logger.getLogger(HabitacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        String unaConsulta = "select * from habitaciones where estado = 1";
+        String unaConsulta = "select * from habitaciones where estado = "+true;
 
         Statement unaSentencia = null;
         try {
@@ -48,7 +48,7 @@ public class HabitacionDAOImpl implements HabitacionDAO{
                 System.out.println("Caracteristicas: " + unResultado.getString("caracteristicas"));
                 System.out.println("Precio x Día: " + unResultado.getString("precio_diario"));
                 System.out.println("Caracteristicas: " + unResultado.getString("caracteristicas"));
-                System.out.println("Tipo de Habitación: " + unResultado.getString("tipoHabitacion"));
+                System.out.println("Tipo de Habitación: " + unResultado.getString("tipo_habitacion"));
                 System.out.println("--------------------------------");
             }
         } catch (SQLException ex) {
@@ -100,7 +100,7 @@ public class HabitacionDAOImpl implements HabitacionDAO{
                 System.out.println("Precio x Día: " + unResultado.getString("precio_diario"));
                 System.out.println("Caracteristicas: " + unResultado.getString("caracteristicas"));
                 System.out.println("Estado: " + unResultado.getString("estado"));
-                System.out.println("Tipo de Habitación: " + unResultado.getString("tipoHabitacion"));
+                System.out.println("Tipo de Habitación: " + unResultado.getString("tipo_habitacion"));
                 System.out.println("--------------------------------");
             }
         } catch (SQLException ex) {
@@ -164,8 +164,7 @@ public class HabitacionDAOImpl implements HabitacionDAO{
             Logger.getLogger(HabitacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            //unaSentencia.setBoolean(4, a.getEstado());
-            unaSentencia.setBoolean(7, false);
+            unaSentencia.setBoolean(7, true);
         } catch (SQLException ex) {
             Logger.getLogger(HabitacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -266,7 +265,7 @@ public class HabitacionDAOImpl implements HabitacionDAO{
                 String caracteristicas = unResultado.getString("caracteristicas");
                 int precio_diario = unResultado.getInt("precio_diario");
                 Boolean estado = false;
-                String tipoHabitacion = unResultado.getString("tipoHabitacion");
+                String tipoHabitacion = unResultado.getString("tipo_habitacion");
                 
                 Habitacion a = new Habitacion(idHabitacion, numero, piso, descripcion, caracteristicas, precio_diario, estado, tipoHabitacion);
                 lista.add(a);
@@ -284,4 +283,36 @@ public class HabitacionDAOImpl implements HabitacionDAO{
 
         return lista;
     }
+
+    @Override
+    public void modificarEstado(Habitacion a) { 
+        a.setEstado(!(a.getEstado()));
+        Connection unaConexion = null;
+        try {
+            unaConexion = Conexion.obtenerConexion();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+            Logger.getLogger(HabitacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String S = "update habitaciones set estado = "+a.getEstado()+"where idHabitacion="+a.getIdHabitacion();
+        String unaConsulta = S;
+        
+        PreparedStatement unaSentencia = null;
+        
+        try {
+            unaSentencia = unaConexion.prepareStatement(unaConsulta);
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }     
+        try {
+            unaSentencia.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("Actualizacion correcta");
+        try {
+            unaConexion.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(HabitacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
 }
