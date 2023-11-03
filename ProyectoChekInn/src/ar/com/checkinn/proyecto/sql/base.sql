@@ -43,8 +43,8 @@ DROP TABLE IF EXISTS `basereserva`.`habitaciones` ;
 
 CREATE TABLE IF NOT EXISTS `basereserva`.`habitaciones` (
   `idhabitacion` INT(11) NOT NULL,
-  `idconsumo` INT NOT NULL,
   `numero` VARCHAR(4) NOT NULL,
+  `piso` VARCHAR(2) NOT NULL,
   `descripcion` VARCHAR(255) NULL DEFAULT NULL,
   `caracteristicas` VARCHAR(512) NULL DEFAULT NULL,
   `precio_diario` DECIMAL(7,2) NOT NULL,
