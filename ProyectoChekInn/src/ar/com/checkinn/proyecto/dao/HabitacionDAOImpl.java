@@ -285,16 +285,14 @@ public class HabitacionDAOImpl implements HabitacionDAO{
     }
 
     @Override
-    public void modificarEstado(Habitacion a) { 
-        a.setEstado(!(a.getEstado()));
+    public void ocuparHabitacion(Habitacion a) {         
         Connection unaConexion = null;
         try {
             unaConexion = Conexion.obtenerConexion();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
             Logger.getLogger(HabitacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        String S = "update habitaciones set estado = "+a.getEstado()+"where idHabitacion="+a.getIdHabitacion();
-        String unaConsulta = S;
+        String unaConsulta = "update habitaciones set estado = "+false+" where idHabitacion="+a.getIdHabitacion();
         
         PreparedStatement unaSentencia = null;
         
@@ -314,5 +312,38 @@ public class HabitacionDAOImpl implements HabitacionDAO{
         } catch (SQLException ex) {
             Logger.getLogger(HabitacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
+    }
+
+    @Override
+    public void liberarHabitacion(Habitacion a) {
+        Connection unaConexion = null;
+        try {
+            unaConexion = Conexion.obtenerConexion();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+            Logger.getLogger(HabitacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String unaConsulta = "update habitaciones set estado = "+true+" where idHabitacion="+a.getIdHabitacion();
+        
+        PreparedStatement unaSentencia = null;
+        
+        try {
+            unaSentencia = unaConexion.prepareStatement(unaConsulta);
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }     
+        try {
+            unaSentencia.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("Actualizacion correcta");
+        try {
+            unaConexion.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(HabitacionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }
+       
+
