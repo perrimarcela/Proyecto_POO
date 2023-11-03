@@ -41,7 +41,7 @@ public class Habitacion extends HabitacionDAOImpl {
             System.out.println("Superaste la cantidad de caracteres permitidos, el maximo es 20 caracteres");
         }
     }
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
     public final void setEstado(boolean estado) {
