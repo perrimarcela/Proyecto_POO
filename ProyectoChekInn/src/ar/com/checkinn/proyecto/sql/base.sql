@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `basereserva`.`huespedes` (
   `tipo_documento` VARCHAR(15) NOT NULL,
   `nro_documento` VARCHAR(8) NOT NULL,
   `direccion` VARCHAR(50) NOT NULL,
-  `telefono` VARCHAR(8) NULL DEFAULT NULL,
+  `telefono` VARCHAR(10) NULL DEFAULT NULL,
   `email` VARCHAR(25) NULL DEFAULT NULL,
   PRIMARY KEY (`idhuesped`))
 ENGINE = InnoDB
