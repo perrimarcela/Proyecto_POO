@@ -45,8 +45,8 @@ public class HuespedDAOImpl implements HuespedDAO{
             while (unResultado.next()) {
                 System.out.println("Nombre: " + unResultado.getString("nombre"));
                 System.out.println("Apellido: " + unResultado.getString("apellido"));
-                System.out.println("Tipo Documento: " + unResultado.getString("tipoDocumento"));
-                System.out.println("N° Documento: " + unResultado.getString("numDocumento"));
+                System.out.println("Tipo Documento: " + unResultado.getString("tipo_documento"));
+                System.out.println("N° Documento: " + unResultado.getString("nro_documento"));
                 System.out.println("Direccion: " + unResultado.getString("direccion"));
                 System.out.println("Telefono: " + unResultado.getString("telefono"));
                 System.out.println("Email" + unResultado.getString("email"));
@@ -66,7 +66,7 @@ public class HuespedDAOImpl implements HuespedDAO{
     }
     
     @Override
-     public void consultarUno(String numDocumento) {
+     public void consultarUno(String nro_documento) {
         Connection unaConexion = null;
         try {
             unaConexion = Conexion.obtenerConexion();
@@ -74,7 +74,7 @@ public class HuespedDAOImpl implements HuespedDAO{
             Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        String unaConsulta = "select * from huespedes where numDocumento = '"  + numDocumento + "'";
+        String unaConsulta = "select * from huespedes where nro_documento = '"  + nro_documento + "'";
 
         Statement unaSentencia = null;
         try {
@@ -95,8 +95,8 @@ public class HuespedDAOImpl implements HuespedDAO{
                 System.out.println("ID Huesped: " + unResultado.getString("idHuesped"));
                 System.out.println("Nombre: " + unResultado.getString("nombre"));
                 System.out.println("Apellido: " + unResultado.getString("apellido"));
-                System.out.println("Tipo Documento: " + unResultado.getString("tipoDocumento"));
-                System.out.println("N° Documento: " + unResultado.getString("numDocumento"));
+                System.out.println("Tipo Documento: " + unResultado.getString("tipo_documento"));
+                System.out.println("N° Documento: " + unResultado.getString("nro_documento"));
                 System.out.println("Direccion: " + unResultado.getString("direccion"));
                 System.out.println("Telefono: " + unResultado.getString("telefono"));
                 System.out.println("Email" + unResultado.getString("email"));
@@ -123,7 +123,7 @@ public class HuespedDAOImpl implements HuespedDAO{
             Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        String unaInsercion = "insert into huespedes(nombre, apellido, tipoDocumento, numDocumento, direccion, telefono, email) values(?, ?, ?, ?, ?, ?, ?)";
+        String unaInsercion = "insert into huespedes(idHuesped,nombre, apellido, tipo_documento, nro_documento, direccion, telefono, email) values(?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement unaSentencia = null;
         try {
@@ -133,37 +133,42 @@ public class HuespedDAOImpl implements HuespedDAO{
         }
 
         try {
-            unaSentencia.setString(1, a.getNombre());
+            unaSentencia.setInt(1, a.getIdHuesped());
         } catch (SQLException ex) {
             Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            unaSentencia.setString(2, a.getApellido());
+            unaSentencia.setString(2, a.getNombre());
         } catch (SQLException ex) {
             Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            unaSentencia.setString(3, a.getTipoDocumento());
+            unaSentencia.setString(3, a.getApellido());
         } catch (SQLException ex) {
             Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            unaSentencia.setString(4, a.getNumDocumento());
+            unaSentencia.setString(4, a.gettipo_documento());
         } catch (SQLException ex) {
             Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            unaSentencia.setString(5, a.getDireccion());
+            unaSentencia.setString(5, a.getnro_documento());
         } catch (SQLException ex) {
             Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            unaSentencia.setString(6, a.getTelefono());
+            unaSentencia.setString(6, a.getDireccion());
         } catch (SQLException ex) {
             Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            unaSentencia.setString(7, a.getEmail());
+            unaSentencia.setString(7, a.getTelefono());
+        } catch (SQLException ex) {
+            Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            unaSentencia.setString(8, a.getEmail());
         } catch (SQLException ex) {
             Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -185,7 +190,7 @@ public class HuespedDAOImpl implements HuespedDAO{
     }
      
     @Override
-     public void eliminar(String numDocumento) {
+     public void eliminar(String nro_documento) {
         Connection unaConexion = null;
         try {
             unaConexion = Conexion.obtenerConexion();
@@ -193,7 +198,7 @@ public class HuespedDAOImpl implements HuespedDAO{
             Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        String unaEliminacion = "delete from huespedes where numDocumento = ?";
+        String unaEliminacion = "delete from huespedes where nro_documento = ?";
 
         PreparedStatement unaSentencia = null;
         try {
@@ -203,7 +208,7 @@ public class HuespedDAOImpl implements HuespedDAO{
         }
 
         try {
-            unaSentencia.setString(1, numDocumento);
+            unaSentencia.setString(1, nro_documento);
         } catch (SQLException ex) {
             Logger.getLogger(HuespedDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
