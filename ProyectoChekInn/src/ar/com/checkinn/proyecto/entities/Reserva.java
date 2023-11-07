@@ -19,15 +19,15 @@ public class Reserva {
     }
 
     public Reserva(int idReserva, Habitacion idHabitacion, Huesped idHuesped, List<Empleado> empleado, String tipo_reserva, String fecha_ingreso, String fecha_salida, double costo_alojamiento, boolean estado) {
-        this.idReserva = idReserva;
-        this.idHabitacion = idHabitacion;
-        this.idHuesped = idHuesped;
+        this.setIdReserva(idReserva);
+        this.setIdHabitacion(idHabitacion);
+        this.setIdHuesped(idHuesped);
         this.empleado = empleado;
-        this.tipo_reserva = tipo_reserva;
-        this.fecha_ingreso = fecha_ingreso;
-        this.fecha_salida = fecha_salida;
-        this.costo_alojamiento = costo_alojamiento;
-        this.estado = estado;
+        this.settipo_reserva(tipo_reserva);
+        this.setfecha_ingreso(fecha_ingreso);
+        this.setfecha_salida(fecha_salida);
+        this.setcosto_alojamiento(costo_alojamiento);
+        this.setEstado(estado);
     }
     
     //Getters and Setters
