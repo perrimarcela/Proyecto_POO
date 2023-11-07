@@ -15,7 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ReservaDAOImpl implements ReservaDAO{
-    public void consultarUno(int IdReserva) {
+    public void consultarUno(int idReserva) {
         Connection unaConexion = null;
         try {
             unaConexion = Conexion.obtenerConexion();
@@ -23,8 +23,7 @@ public class ReservaDAOImpl implements ReservaDAO{
             Logger.getLogger(ReservaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        String unaConsulta = "select * from reservas where  = '"  + numero + "'"; //falta hacer consulta para traer a traves del id el numero de habitacion
-
+        String unaConsulta = "select * from reservas where idReserva = " + idReserva;
         Statement unaSentencia = null;
         try {
             unaSentencia = unaConexion.createStatement();
@@ -43,13 +42,13 @@ public class ReservaDAOImpl implements ReservaDAO{
             if (unResultado.next()) {
                 System.out.println("ID Reserva: " + unResultado.getString("idReserva"));
                 System.out.println("ID Habitacion" + unResultado.getString("idHabitacion"));
-                System.out.println("ID Huesped: " + unResultado.getString("apellido"));
-                System.out.println("Tipo Documento: " + unResultado.getString("tipo_documento"));
-                System.out.println("N° Documento: " + unResultado.getString("nro_documento"));
-                System.out.println("Direccion: " + unResultado.getString("direccion"));
-                System.out.println("Telefono: " + unResultado.getString("telefono"));
-                System.out.println("Email" + unResultado.getString("email"));
-                System.out.println("--------------------------------");
+                System.out.println("ID Huesped: " + unResultado.getString("idHuesped"));
+                System.out.println("ID Empleado: " + unResultado.getString("idEmpleado"));
+                System.out.println("Tipo Reserva: " + unResultado.getString("tipo_reserva"));
+                System.out.println("Fecha Ingreso: " + unResultado.getString("fecha_ingreso"));
+                System.out.println("Fecha Salida: " + unResultado.getString("fecha_salida"));
+                System.out.println("Costo: " + unResultado.getString("costo_alojamiento"));
+                System.out.println("Estado: " + unResultado.getString("estado"));              
             }
         } catch (SQLException ex) {
             Logger.getLogger(ReservaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
