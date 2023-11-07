@@ -13,7 +13,7 @@ public class Conexion {
         
         try {
             String driver = "com.mysql.cj.jdbc.Driver";
-            conexion = "jdbc:mysql://127.0.0.1:3306/basereservas";
+            conexion = "jdbc:mysql://127.0.0.1:3310/basereserva";
             usuario = "root";
             clave = "";
             
