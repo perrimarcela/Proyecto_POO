@@ -6,6 +6,6 @@ import java.util.ArrayList;
 public interface ReservaDAO {
     void consultarUna(int IdReserva);
     void insertar(Reserva a);
-    void eliminar(String numero);
+    void eliminar(int IdReserva);
     ArrayList<Reserva> cargarLista();
 }
