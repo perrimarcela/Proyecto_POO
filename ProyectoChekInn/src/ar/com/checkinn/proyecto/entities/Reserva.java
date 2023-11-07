@@ -8,25 +8,25 @@ public class Reserva {
     private Habitacion idHabitacion;    
     private Huesped idHuesped;
     private List<Empleado> empleado;   
-    private String tipoReserva;
-    private String fechaIngreso;
-    private String fechaSalida;   
-    private double costoAlojamiento;   
+    private String tipo_reserva;
+    private String fecha_ingreso;
+    private String fecha_salida;   
+    private double costo_alojamiento;   
     private boolean estado;
 
     //constructores
     public Reserva() {    
     }
 
-    public Reserva(int idReserva, Habitacion idHabitacion, Huesped idHuesped, List<Empleado> empleado, String tipoReserva, String fechaIngreso, String fechaSalida, double costoAlojamiento, boolean estado) {
+    public Reserva(int idReserva, Habitacion idHabitacion, Huesped idHuesped, List<Empleado> empleado, String tipo_reserva, String fecha_ingreso, String fecha_salida, double costo_alojamiento, boolean estado) {
         this.idReserva = idReserva;
         this.idHabitacion = idHabitacion;
         this.idHuesped = idHuesped;
         this.empleado = empleado;
-        this.tipoReserva = tipoReserva;
-        this.fechaIngreso = fechaIngreso;
-        this.fechaSalida = fechaSalida;
-        this.costoAlojamiento = costoAlojamiento;
+        this.tipo_reserva = tipo_reserva;
+        this.fecha_ingreso = fecha_ingreso;
+        this.fecha_salida = fecha_salida;
+        this.costo_alojamiento = costo_alojamiento;
         this.estado = estado;
     }
     
@@ -37,41 +37,41 @@ public class Reserva {
     public final void setEstado(boolean estado) {
         this.estado = estado;
     }
-    public double getCostoAlojamiento() {
-        return costoAlojamiento;
+    public double getcosto_alojamiento() {
+        return costo_alojamiento;
     }
-    public final void setCostoAlojamiento(double costoAlojamiento) {
+    public final void setcosto_alojamiento(double costo_alojamiento) {
         
-        if (costoAlojamiento >= 0 && costoAlojamiento <= 9999999.99)
+        if (costo_alojamiento >= 0 && costo_alojamiento <= 9999999.99)
         {
-           this.costoAlojamiento = costoAlojamiento; 
+           this.costo_alojamiento = costo_alojamiento; 
         } else
         {
             System.out.println("Cantidad de digitos no permitida");
         }
         
     }
-    public String getFechaSalida() {
-        return fechaSalida;
+    public String getfecha_salida() {
+        return fecha_salida;
     }
-    public final void setFechaSalida(String fechaSalida) {
+    public final void setfecha_salida(String fecha_salida) {
         
         
-        this.fechaSalida = fechaSalida;
+        this.fecha_salida = fecha_salida;
     }
-    public String getFechaIngreso() {
-        return fechaIngreso;
+    public String getfecha_ingreso() {
+        return fecha_ingreso;
     }
-    public final void setFechaIngreso(String fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
+    public final void setfecha_ingreso(String fecha_ingreso) {
+        this.fecha_ingreso = fecha_ingreso;
     }
-    public String getTipoReserva() {
-        return tipoReserva;
+    public String gettipo_reserva() {
+        return tipo_reserva;
     }
-    public final void setTipoReserva(String tipoReserva) {
-        if (tipoReserva.length() >= 0 && tipoReserva.length() <= 20)
+    public final void settipo_reserva(String tipo_reserva) {
+        if (tipo_reserva.length() >= 0 && tipo_reserva.length() <= 20)
         {
-            this.tipoReserva = tipoReserva;
+            this.tipo_reserva = tipo_reserva;
         } else
         {
             System.out.println("cantidad de caracteres excede el maximo permitido");
@@ -101,7 +101,7 @@ public class Reserva {
     //ToString
     @Override
     public String toString() {
-        return "Reserva= " + idReserva + "\nHabitacion= " + idHabitacion + "\nHuesped= " + idHuesped + "\nEmpleado= " + empleado + "\nTipo de Reserva= " + tipoReserva + "\nFecha de Ingreso= " + fechaIngreso + "\nFecha de Salida= " + fechaSalida + "Costo de Alojamiento= " + costoAlojamiento + "\nEstado= " + estado;
+        return "Reserva= " + idReserva + "\nHabitacion= " + idHabitacion + "\nHuesped= " + idHuesped + "\nEmpleado= " + empleado + "\nTipo de Reserva= " + tipo_reserva + "\nFecha de Ingreso= " + fecha_ingreso + "\nFecha de Salida= " + fecha_salida + "Costo de Alojamiento= " + costo_alojamiento + "\nEstado= " + estado;
     }
     
 }
