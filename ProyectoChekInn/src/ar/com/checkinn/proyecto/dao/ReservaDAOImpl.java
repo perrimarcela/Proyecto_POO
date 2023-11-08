@@ -16,7 +16,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ReservaDAOImpl implements ReservaDAO{
-    public void consultarUno(int idReserva) {
+        
+    @Override
+    public void consultarUna(int idReserva) {
         Connection unaConexion = null;
         try {
             unaConexion = Conexion.obtenerConexion();
@@ -59,13 +61,7 @@ public class ReservaDAOImpl implements ReservaDAO{
             unaConexion.close();
         } catch (SQLException ex) {
             Logger.getLogger(ReservaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    @Override
-    public void consultarUna(int idReserva) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }    
     }
 
     @Override
@@ -85,6 +81,7 @@ public class ReservaDAOImpl implements ReservaDAO{
         } catch (SQLException ex) {
             Logger.getLogger(ReservaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         try {
             unaSentencia.setInt(1, a.getIdReserva());
         } catch (SQLException ex) {
@@ -154,7 +151,7 @@ public class ReservaDAOImpl implements ReservaDAO{
 
     @Override
     public void eliminar(int idReserva) {
-        Connection unaConexion = null;
+         Connection unaConexion = null;
         try {
             unaConexion = Conexion.obtenerConexion();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
@@ -182,7 +179,6 @@ public class ReservaDAOImpl implements ReservaDAO{
         } catch (SQLException ex) {
             Logger.getLogger(ReservaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     @Override
