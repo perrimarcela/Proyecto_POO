@@ -45,7 +45,7 @@ public class Habitacion extends HabitacionDAOImpl {
         return estado;
     }
     public final void setEstado(boolean estado) {
-        
+        this.estado = estado;
     }
     public double getprecio_diario() {
         return precio_diario;
